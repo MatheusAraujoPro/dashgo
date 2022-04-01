@@ -1,5 +1,9 @@
-import { Flex, Input, Text, Icon } from "@chakra-ui/react";
-import { RiSearchLine } from "react-icons/ri";
+import { Flex, Input, Text, Icon, HStack, Box, Avatar } from "@chakra-ui/react";
+import {
+  RiSearchLine,
+  RiNotificationOffLine,
+  RiUserAddLine,
+} from "react-icons/ri";
 
 export function Header() {
   return (
@@ -41,6 +45,29 @@ export function Header() {
           placeholder="Buscar na plataforma"
         />
         <Icon as={RiSearchLine} />
+      </Flex>
+
+      <HStack
+        spacing="8"
+        mx="8"
+        pr="8"
+        py="1"
+        color="gray.300"
+        borderRightWidth={1}
+        borderColor="gray.700"
+      >
+        <Icon as={RiNotificationOffLine} />
+        <Icon as={RiUserAddLine} />
+      </HStack>
+
+      <Flex align="center">
+        <Box mr="4" textAlign="right">
+          <Text>Matheus de Araújo</Text>
+          <Text color="gray.300" fontSize="small">
+            matheusaraujo.ti10@gmail.com
+          </Text>
+        </Box>
+        <Avatar size="md" name="Matheus de Araújo" />
       </Flex>
     </Flex>
   );
