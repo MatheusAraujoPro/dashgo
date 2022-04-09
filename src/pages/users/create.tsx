@@ -5,13 +5,11 @@ import {
   Flex,
   Heading,
   HStack,
-  Icon,
   SimpleGrid,
   VStack,
 } from "@chakra-ui/react";
-import { RiAddLine } from "react-icons/ri";
 import { Header } from "../../Components/Header";
-import { Input } from "../../Components/Input";
+import { Input } from "../../Components/Form/Input";
 import { Sidebar } from "../../Components/Sidebar";
 
 export default function UserList() {
