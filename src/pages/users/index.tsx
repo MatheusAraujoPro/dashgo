@@ -12,6 +12,7 @@ import {
   Thead,
   Tr,
   Text,
+  useBreakpointValue,
 } from "@chakra-ui/react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
 import { Header } from "../../Components/Header";
@@ -19,6 +20,11 @@ import { Pagination } from "../../Components/Pagination";
 import { Sidebar } from "../../Components/Sidebar";
 
 export default function UserList() {
+  const isWideVersion = useBreakpointValue({
+    base: false,
+    lg: true,
+  });
+
   return (
     <Box>
       <Header />
@@ -52,7 +58,7 @@ export default function UserList() {
                   <Checkbox colorScheme="pink" />
                 </Th>
                 <Th>Usuários</Th>
-                <Th>Data de cadastro</Th>
+                {isWideVersion && <Th>Data de cadastro</Th>}
                 <Th w="8"></Th>
               </Tr>
             </Thead>
@@ -64,14 +70,16 @@ export default function UserList() {
                 </Td>
                 <Td>
                   <Box>
-                    <Text fontWeight="bold">Matheus dwe Araújo Leite</Text>
+                    <Text fontWeight="bold">Matheus de Araújo Leite</Text>
                     <Text fontSize="sm" color="gray.300">
-                      matheusaraujo.ti10@gmail.com
+                      matheusaraujo@example.com
                     </Text>
                   </Box>
                 </Td>
                 <Td>
-                  <Text fontWeight="bold">21 de Fevereiro</Text>
+                  {isWideVersion && (
+                    <Text fontWeight="bold">21 de Fevereiro</Text>
+                  )}
                 </Td>
                 <Td>
                   <Button
@@ -81,7 +89,36 @@ export default function UserList() {
                     colorScheme="purple"
                     leftIcon={<Icon as={RiPencilLine} />}
                   >
-                    Editar
+                    {isWideVersion ? "Editar" : ""}
+                  </Button>
+                </Td>
+              </Tr>
+              <Tr>
+                <Td>
+                  <Checkbox colorScheme="pink" />
+                </Td>
+                <Td>
+                  <Box>
+                    <Text fontWeight="bold">Maria Wine</Text>
+                    <Text fontSize="sm" color="gray.300">
+                      winelinda0@example.com
+                    </Text>
+                  </Box>
+                </Td>
+                <Td>
+                  {isWideVersion && (
+                    <Text fontWeight="bold">21 de Fevereiro</Text>
+                  )}
+                </Td>
+                <Td>
+                  <Button
+                    as="a"
+                    size="sm"
+                    fontSize="sm"
+                    colorScheme="purple"
+                    leftIcon={<Icon as={RiPencilLine} />}
+                  >
+                    {isWideVersion ? "Editar" : ""}
                   </Button>
                 </Td>
               </Tr>
