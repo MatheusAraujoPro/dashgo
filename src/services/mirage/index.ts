@@ -3,7 +3,7 @@ import { faker } from '@faker-js/faker'
 interface User{
     name: string,
     email: string,
-    created_at: string
+    createdAt: Date
 }
 
 export function makeServer(){
@@ -26,13 +26,13 @@ export function makeServer(){
                 },
 
                 createdAt(){
-                    return faker.date.recent(10)
+                    return faker.date.weekday()
                 }
             })
         },
 
         seeds(server){
-            server.createList('user', 200)
+            server.createList('user', 10)
         },
 
         routes(){
