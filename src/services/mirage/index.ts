@@ -39,6 +39,7 @@ export function makeServer(){
             this.namespace = 'api'
             this.timing = 750 //milisegundos
             // Shorthands
+            this.get('/users/:id')
             this.get('/users', function(schema, request) {
                 const { page = 1, per_page = 10} = request.queryParams
 
