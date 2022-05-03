@@ -1,4 +1,4 @@
-import { useQuery } from "react-query";
+import { useQuery, UseQueryOptions } from "react-query";
 import { api } from "../axios";
 
 interface User{
@@ -41,6 +41,8 @@ export async function getUsers(page: number): Promise<GetUsersResponse>  {
   };
 };
 
-export function useUsers(page: number){
-  return useQuery(["users", page], () => getUsers(page)) 
+export function useUsers(page: number, options: UseQueryOptions ){
+  return useQuery(["users", page], () => getUsers(page), {    
+   ...options
+  }) 
 }

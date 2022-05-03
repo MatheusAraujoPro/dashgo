@@ -16,6 +16,7 @@ import {
   Spinner,
   Link,
 } from "@chakra-ui/react";
+import { GetServerSideProps } from "next";
 import NextLink from "next/link";
 import { useEffect, useState } from "react";
 import { RiAddLine, RiPencilLine } from "react-icons/ri";
@@ -27,7 +28,7 @@ import { api } from "../../services/axios";
 import { getUsers, useUsers } from "../../services/hooks/useUsers";
 import { queryCliente } from "../../services/queryCliente";
 
-export default function UserList() {
+export default function UserList({ users }) {
   /*
     React Query faz buscas no back-end e salva o seu
     resultado em cache, com o nome que é passado como
@@ -35,7 +36,9 @@ export default function UserList() {
 
   */
   const [page, setPage] = useState(1);
-  const { data, isLoading, isFetching, error } = useUsers(page);
+  const { data, isLoading, isFetching, error } = useUsers(page, {
+    initialData: users,
+  });
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -152,3 +155,12 @@ export default function UserList() {
     </Box>
   );
 }
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const { users, totalCount } = await getUsers(1);
+  return {
+    props: {
+      users,
+    },
+  };
+};

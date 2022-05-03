@@ -1,4 +1,4 @@
-import { createServer, Factory, Model, Response } from 'miragejs'
+import { createServer, Factory, Model, Response, ActiveModelSerializer } from 'miragejs'
 import { faker } from '@faker-js/faker'
 interface User{
     name: string,
@@ -12,6 +12,12 @@ export function makeServer(){
         models:{
             // O meu objeto pode não usar todas as propriedades que possui
             user: Model.extend<Partial<User>>({})
+        },
+
+        // Permite que dados relacionados sejam criados na mesma requisição
+
+        serializers:{
+            application: ActiveModelSerializer,
         },
 
         // Popular o banco de dados do Mirage com muitos dados de uma vez
